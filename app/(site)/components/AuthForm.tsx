@@ -73,7 +73,17 @@ const AuthForm = () => {
     const socialAction = (action: string) => {
         setIsLoading(true);
 
-        // NextAuth Social Sign In
+        signIn(action, { redirect: false })
+        .then((callback) => {
+            if (callback?.error) {
+                toast.error('Invalid Credentials');
+            }
+
+            if (callback?.ok && !callback?.error) {
+                toast.success('Logged in!')
+            }
+        })
+        .finally(() => setIsLoading(false));
     }
 
     return (
@@ -173,7 +183,7 @@ const AuthForm = () => {
                         />
                         <AuthSocialButton 
                             icon={BsGoogle}
-                            onClick={() => socialAction('github')}
+                            onClick={() => socialAction('google')}
                         />
                     </div>
                 </div>
