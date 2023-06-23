@@ -18,7 +18,7 @@ const Avatar: React.FC<AvatarProps> = ({
                     inline-block
                     rounded-full
                     overflow-hidden
-                    h-
+                    h-9
                     w-9
                     md:h-11
                     md:w-11
